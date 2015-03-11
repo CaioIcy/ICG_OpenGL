@@ -55,7 +55,7 @@ void InitializeGlfw() {
 	RegisterFunctionForExits(glfwTerminate, "GLFW termination");
 }
 
-void InitializeGlew(const bool experimental) {
+void InitializeGlew() {
 	log_debug() << "------- Initializing GLEW -------";
 	
 	if(FLAGS_exp) {

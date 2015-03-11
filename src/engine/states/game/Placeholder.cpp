@@ -169,7 +169,7 @@ void Placeholder::Load() {
 	log_info() << "Loading STATE placeholder...";
 
 	// Create program
-	m_game_object = new GameObject("1_hello_triangle");
+	m_game_object = new GameObject("4_triangle_circle");
 }
 
 void Placeholder::Unload() {

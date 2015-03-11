@@ -17,26 +17,27 @@ void GetGlVersion(int* out_major, int* out_minor, bool* out_over_3_1) {
 	ASSERT(out_major != nullptr, "Should not be null.");
 	ASSERT(out_minor != nullptr, "Should not be null.");
 	ASSERT(out_over_3_1 != nullptr, "Should not be null.");
-	bool not_first = true;
+	
+	LogBuffer log_version{log_debug()};
+	log_version << "Supported OpenGL versions:\n";
 
-	{
-		LogBuffer log_version{log_debug()};
-		log_version << "Supported OpenGL versions:\n";
-		for(int major = 4; major > 0; major--) {
-			for(int minor = 5; minor >= 0; minor--) {
-				std::string version{"GL_VERSION_"};
-				version += std::to_string(major) + "_" + std::to_string(minor);
-				if(glewIsSupported(version.c_str())) {
-					log_version << major << "." << minor;
-					if(not_first) {
-						(*out_major) = major;
-						(*out_minor) = minor;
-						not_first = false;
-						log_version << " * ";
-					}
+	bool no_supported = true;
 
-					log_version << ", ";
+	for(int major = 4; major > 0; major--) {
+		for(int minor = 5; minor >= 0; minor--) {
+			std::string version{"GL_VERSION_"};
+			version += std::to_string(major) + "_" + std::to_string(minor);
+			if(glewIsSupported(version.c_str())) {
+				log_version << major << "." << minor;
+
+				if(no_supported) {
+					no_supported = false;
+					(*out_major) = major;
+					(*out_minor) = minor;
+					log_version << " * ";
 				}
+
+				log_version << ", ";
 			}
 		}
 	}
@@ -101,34 +102,38 @@ void Game::Load() {
 	InputHandler::Initialize();
 
 	// Creating a valid OpenGL rendering context, so we can initialize GLEW.
-	m_impl->window = glfwCreateWindow(1024, 768, "ザ OGLE", nullptr, nullptr);
+	m_impl->window = glfwCreateWindow(800, 600, "ザ OGLE", nullptr, nullptr);
 	ASSERT(m_impl->window != nullptr, "Could not create GLFW window.");
 	glfwMakeContextCurrent(m_impl->window);
 
 	// Initialize GLEW.
-	systems::InitializeGlew(true);
+	systems::InitializeGlew();
 
 	// Getting newest available GL version.
+	const int context_major = 3;
+	const int context_minor = 2;
 	int gl_major = 0;
 	int gl_minor = 0;
 	bool version_over_3_1 = false;
 	GetGlVersion(&gl_major, &gl_minor, &version_over_3_1);
-	log_debug() << "Setting GLFW context version as: " << gl_major << "." << gl_minor;
+	ASSERTF(gl_major >= context_major, "Should have OpenGL %d.x or higher.", context_major);
+	// ASSERTF(!(gl_major == context_major && gl_minor < context_minor), "Should have OpenGL %d.%d or higher.", context_major, context_minor);
 
 	glfwDestroyWindow(m_impl->window);
 
 	// Setting window hints.
+	log_debug() << "Setting GLFW context version as: " << context_major << "." << context_minor;
 	if(version_over_3_1) {
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	}
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, gl_major);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, gl_minor);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);
 
 	// Initialize the window.
-	m_impl->window = glfwCreateWindow(1024, 768, "ザ OGLE", nullptr, nullptr);
+	m_impl->window = glfwCreateWindow(800, 600, "ザ OGLE", nullptr, nullptr);
 	ASSERT(m_impl->window != nullptr, "Could not create GLFW window.");
 	glfwMakeContextCurrent(m_impl->window);
 	glfwSwapInterval(1);
