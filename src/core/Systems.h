@@ -4,7 +4,7 @@ namespace ogle {
 namespace systems {
 
 void InitializeGlfw();
-void InitializeGlew(const bool glew_experimental);
+void InitializeGlew(const bool experimental);
 void InitializeSdlImage();
 
 } // namespace systems

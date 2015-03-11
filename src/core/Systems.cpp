@@ -3,9 +3,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <SDL2/SDL_image.h>
+#include <gflags/gflags.h>
 #include "util/Assert.h"
 #include "util/Logger.h"
 #include "util/GlLog.h"
+
+// DECLARE_bool(exp);
 
 namespace {
 
@@ -52,10 +55,19 @@ void InitializeGlfw() {
 	RegisterFunctionForExits(glfwTerminate, "GLFW termination");
 }
 
-void InitializeGlew(const bool glew_experimental) {
+void InitializeGlew(const bool experimental) {
 	log_debug() << "------- Initializing GLEW -------";
 	
-	glewExperimental = (glew_experimental) ? GL_TRUE : GL_FALSE;
+	// if(FLAGS_exp) {
+	// 	glewExperimental = GL_TRUE;
+	// 	log_debug() << "Using glewExperimental.";
+	// }
+	// else {
+	// 	glewExperimental = GL_FALSE;
+	// 	log_debug() << "Not using glewExperimental.";
+	// }
+
+	glewExperimental = (experimental) ? GL_TRUE : GL_FALSE;
 	GLenum glew_initialized = glewInit();
 	if (glew_initialized != GLEW_OK) {
 		log_error() << "GLEW error: " <<  glewGetErrorString(glew_initialized);

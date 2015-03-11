@@ -1,14 +1,14 @@
 #include <csignal>
+#include <gflags/gflags.h>
 #include "engine/Game.h"
 #include "util/Logger.h"
+
+// DEFINE_bool(exp, false, "Whether to use glewExperimental or not.");
 
 using namespace ogle;
 
 int main(int argc, char** argv) {
-
-	// Unused for now, so avoiding compiler warnings.
-	(static_cast<void>(argc));
-	(static_cast<void>(argv));
+	// gflags::ParseCommandLineFlags(&argc, &argv, true);
 
 	log_info() << "Starting OGLE...";
 
