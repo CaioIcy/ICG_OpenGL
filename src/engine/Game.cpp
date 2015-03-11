@@ -17,54 +17,31 @@ void GetGlVersion(int* out_major, int* out_minor, bool* out_over_3_1) {
 	ASSERT(out_major != nullptr, "Should not be null.");
 	ASSERT(out_minor != nullptr, "Should not be null.");
 	ASSERT(out_over_3_1 != nullptr, "Should not be null.");
-	bool found_supported_version = false;
-
-	std::vector<std::pair<int, int>> experimental_versions;
+	bool not_first = true;
 
 	{
 		LogBuffer log_version{log_debug()};
-		log_version << "no experimental:\n";
+		log_version << "Supported OpenGL versions:\n";
 		for(int major = 4; major > 0; major--) {
 			for(int minor = 5; minor >= 0; minor--) {
 				std::string version{"GL_VERSION_"};
 				version += std::to_string(major) + "_" + std::to_string(minor);
 				if(glewIsSupported(version.c_str())) {
-					log_version << major << "." << minor << " / ";
-					experimental_versions.emplace_back(major, minor);
+					log_version << major << "." << minor;
+					if(not_first) {
+						(*out_major) = major;
+						(*out_minor) = minor;
+						not_first = false;
+						log_version << " * ";
+					}
+
+					log_version << ", ";
 				}
 			}
 		}
 	}
 
-	systems::InitializeGlew(false);
-
-	int major_no_exp = 0;
-	int minor_no_exp = 0;
-	for(major_no_exp = 4; major_no_exp > 0; major_no_exp--) {
-		for(minor_no_exp = 5; minor_no_exp >= 0; minor_no_exp--) {
-
-			std::string version{"GL_VERSION_"};
-			version += std::to_string(major_no_exp) + "_" + std::to_string(minor_no_exp);
-			found_supported_version = glewIsSupported(version.c_str());
-			if(found_supported_version) {
-				break;
-			}
-		}
-		if(found_supported_version) {
-			break;
-		}
-	}
-	
-	int pairIdx = 0;
-	while(!(experimental_versions[pairIdx].first == major_no_exp
-			&& experimental_versions[pairIdx].second == minor_no_exp)) {
-		pairIdx++;
-	}
-
-	(*out_major) = experimental_versions[pairIdx].first;
-	(*out_minor) = experimental_versions[pairIdx].second;
-
-	if(((*out_major) == 3 && (*out_minor) == 2) || (*out_major) > 3) {
+	if(((*out_major) == 3 && (*out_minor) >= 2) || (*out_major) > 3) {
 		(*out_over_3_1) = true;
 	}
 }

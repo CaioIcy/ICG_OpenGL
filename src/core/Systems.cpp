@@ -8,7 +8,7 @@
 #include "util/Logger.h"
 #include "util/GlLog.h"
 
-// DECLARE_bool(exp);
+DECLARE_bool(exp);
 
 namespace {
 
@@ -58,16 +58,15 @@ void InitializeGlfw() {
 void InitializeGlew(const bool experimental) {
 	log_debug() << "------- Initializing GLEW -------";
 	
-	// if(FLAGS_exp) {
-	// 	glewExperimental = GL_TRUE;
-	// 	log_debug() << "Using glewExperimental.";
-	// }
-	// else {
-	// 	glewExperimental = GL_FALSE;
-	// 	log_debug() << "Not using glewExperimental.";
-	// }
+	if(FLAGS_exp) {
+		glewExperimental = GL_TRUE;
+		log_debug() << "Using glewExperimental.";
+	}
+	else {
+		glewExperimental = GL_FALSE;
+		log_debug() << "Not using glewExperimental.";
+	}
 
-	glewExperimental = (experimental) ? GL_TRUE : GL_FALSE;
 	GLenum glew_initialized = glewInit();
 	if (glew_initialized != GLEW_OK) {
 		log_error() << "GLEW error: " <<  glewGetErrorString(glew_initialized);
