@@ -1,0 +1,5 @@
+<map id="ogle::InputHandler::PollInput" name="ogle::InputHandler::PollInput">
+<area shape="rect" id="node2" href="$classogle_1_1InputHandler.html#a6c0169dfad0f64e2deef0be15e05d9a8" title="ogle::InputHandler\l::Reset" alt="" coords="189,5,317,46"/>
+<area shape="rect" id="node3" href="$classogle_1_1InputHandler.html#adc0f03417a25a7f79cd64f628069fa80" title="ogle::InputHandler\l::PollKeyInputQueue" alt="" coords="182,70,325,111"/>
+<area shape="rect" id="node4" href="$classogle_1_1InputHandler.html#aa53203273d0a357fae0e6d9e455cd488" title="ogle::InputHandler\l::PollJoystick" alt="" coords="189,135,317,177"/>
+</map>

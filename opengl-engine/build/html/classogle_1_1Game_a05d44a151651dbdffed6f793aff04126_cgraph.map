@@ -1,0 +1,7 @@
+<map id="ogle::Game::Update" name="ogle::Game::Update">
+<area shape="rect" id="node2" href="$classogle_1_1InputHandler.html#ac9522b72ec3de73a815937e0e1a0c495" title="ogle::InputHandler\l::PollInput" alt="" coords="192,70,320,111"/>
+<area shape="rect" id="node6" href="$classogle_1_1Game.html#aa8f9cbeb40bba7bbda209750f5ada70e" title="Stops execution and closes the game. " alt="" coords="194,136,318,163"/>
+<area shape="rect" id="node3" href="$classogle_1_1InputHandler.html#a6c0169dfad0f64e2deef0be15e05d9a8" title="ogle::InputHandler\l::Reset" alt="" coords="376,5,504,46"/>
+<area shape="rect" id="node4" href="$classogle_1_1InputHandler.html#adc0f03417a25a7f79cd64f628069fa80" title="ogle::InputHandler\l::PollKeyInputQueue" alt="" coords="369,70,511,111"/>
+<area shape="rect" id="node5" href="$classogle_1_1InputHandler.html#aa53203273d0a357fae0e6d9e455cd488" title="ogle::InputHandler\l::PollJoystick" alt="" coords="376,135,504,177"/>
+</map>

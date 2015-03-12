@@ -1,0 +1,7 @@
+<map id="ogle::InputHandler::Reset" name="ogle::InputHandler::Reset">
+<area shape="rect" id="node2" href="$classogle_1_1InputHandler.html#ac9522b72ec3de73a815937e0e1a0c495" title="ogle::InputHandler\l::PollInput" alt="" coords="181,5,309,46"/>
+<area shape="rect" id="node3" href="$classogle_1_1Game.html#a05d44a151651dbdffed6f793aff04126" title="ogle::Game::Update" alt="" coords="357,12,496,39"/>
+<area shape="rect" id="node4" href="$classogle_1_1Game.html#ad5425ddf6f665f738364a2f7a28eb82f" title="The main game loop. " alt="" coords="545,12,666,39"/>
+<area shape="rect" id="node5" href="$classogle_1_1Game.html#aa3234504f6142603b15ecd822c8e3c75" title="Loads, runs, and eventually unloads the game. " alt="" coords="715,12,840,39"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="888,12,939,39"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="ogle::Game::Run" name="ogle::Game::Run">
+<area shape="rect" id="node2" href="$classogle_1_1Timer.html#a36651586900bec5df68dc9565aa8a598" title="ogle::Timer::FrameTime" alt="" coords="177,85,338,112"/>
+<area shape="rect" id="node3" href="$classogle_1_1Game.html#a05d44a151651dbdffed6f793aff04126" title="ogle::Game::Update" alt="" coords="188,136,327,163"/>
+<area shape="rect" id="node9" href="$classogle_1_1Game.html#ac6208931526caac0f3ec4e80cb71e44a" title="ogle::Game::Render" alt="" coords="188,187,327,213"/>
+<area shape="rect" id="node4" href="$classogle_1_1InputHandler.html#ac9522b72ec3de73a815937e0e1a0c495" title="ogle::InputHandler\l::PollInput" alt="" coords="411,70,539,111"/>
+<area shape="rect" id="node8" href="$classogle_1_1Game.html#aa8f9cbeb40bba7bbda209750f5ada70e" title="Stops execution and closes the game. " alt="" coords="413,136,537,163"/>
+<area shape="rect" id="node5" href="$classogle_1_1InputHandler.html#a6c0169dfad0f64e2deef0be15e05d9a8" title="ogle::InputHandler\l::Reset" alt="" coords="619,5,747,46"/>
+<area shape="rect" id="node6" href="$classogle_1_1InputHandler.html#adc0f03417a25a7f79cd64f628069fa80" title="ogle::InputHandler\l::PollKeyInputQueue" alt="" coords="611,70,754,111"/>
+<area shape="rect" id="node7" href="$classogle_1_1InputHandler.html#aa53203273d0a357fae0e6d9e455cd488" title="ogle::InputHandler\l::PollJoystick" alt="" coords="619,135,747,177"/>
+<area shape="rect" id="node10" href="$namespaceogle_1_1gllog.html#ad02813a3e634459c4dd67730e63b3f88" title="ogle::gllog::CheckGlErrors" alt="" coords="387,187,562,213"/>
+</map>

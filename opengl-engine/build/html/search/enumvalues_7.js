@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['joystick_5faxis_5fcount',['JOYSTICK_AXIS_Count',['../namespaceogle.html#aaa5ceea4d74e6ff1cef01e1e0f77abf8ac4beaf783be93617cd3d5be57ae7329a',1,'ogle']]],
+  ['joystick_5faxis_5fdpadx',['JOYSTICK_AXIS_DpadX',['../namespaceogle.html#aaa5ceea4d74e6ff1cef01e1e0f77abf8a8cd9f16cc651534f5cab1614dce6b3b6',1,'ogle']]],
+  ['joystick_5faxis_5fdpady',['JOYSTICK_AXIS_DpadY',['../namespaceogle.html#aaa5ceea4d74e6ff1cef01e1e0f77abf8ab3d288687b16c4c39175547be9d9a1ee',1,'ogle']]],
+  ['joystick_5faxis_5fl2',['JOYSTICK_AXIS_L2',['../namespaceogle.html#aaa5ceea4d74e6ff1cef01e1e0f77abf8aec228953247614c8f669e09167873970',1,'ogle']]],
+  ['joystick_5faxis_5fleftanalogx',['JOYSTICK_AXIS_LeftAnalogX',['../namespaceogle.html#aaa5ceea4d74e6ff1cef01e1e0f77abf8a7516dc93b11357f117290ce80d08e7fb',1,'ogle']]],
+  ['joystick_5faxis_5fleftanalogy',['JOYSTICK_AXIS_LeftAnalogY',['../namespaceogle.html#aaa5ceea4d74e6ff1cef01e1e0f77abf8abf013bf2a89539357137041f9abc1916',1,'ogle']]],
+  ['joystick_5faxis_5fr2',['JOYSTICK_AXIS_R2',['../namespaceogle.html#aaa5ceea4d74e6ff1cef01e1e0f77abf8ad60567ac0f67045c30d33e9c613aafa9',1,'ogle']]],
+  ['joystick_5faxis_5frightanalogx',['JOYSTICK_AXIS_RightAnalogX',['../namespaceogle.html#aaa5ceea4d74e6ff1cef01e1e0f77abf8a7bf92a6f76717247595bdd89b2254bc3',1,'ogle']]],
+  ['joystick_5faxis_5frightanalogy',['JOYSTICK_AXIS_RightAnalogY',['../namespaceogle.html#aaa5ceea4d74e6ff1cef01e1e0f77abf8ac18cd4d7cdcdbb5ae014e1f2c354daa1',1,'ogle']]],
+  ['joystick_5fbutton_5fa',['JOYSTICK_BUTTON_A',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8a95fca69e3c4d2e0bb32d6e389ffe3464',1,'ogle']]],
+  ['joystick_5fbutton_5fb',['JOYSTICK_BUTTON_B',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8a970b9c631c261d4bd5f5664446432aa6',1,'ogle']]],
+  ['joystick_5fbutton_5fcount',['JOYSTICK_BUTTON_Count',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8aac7512bbdd2bffb5f6cc60185320e915',1,'ogle']]],
+  ['joystick_5fbutton_5fguide',['JOYSTICK_BUTTON_Guide',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8aeffe4308765a77607ecab754308cc528',1,'ogle']]],
+  ['joystick_5fbutton_5fl1',['JOYSTICK_BUTTON_L1',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8a013abda01eb519f5e529e1dc41e5bd3b',1,'ogle']]],
+  ['joystick_5fbutton_5fl3',['JOYSTICK_BUTTON_L3',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8ae84db58e142998be79bcf99e4057c6f7',1,'ogle']]],
+  ['joystick_5fbutton_5fr1',['JOYSTICK_BUTTON_R1',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8afa59dde64b0f15dfd19c92300a460825',1,'ogle']]],
+  ['joystick_5fbutton_5fr3',['JOYSTICK_BUTTON_R3',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8a0f59b3b52a98a3b733e4c8ebee6766bb',1,'ogle']]],
+  ['joystick_5fbutton_5fselect',['JOYSTICK_BUTTON_Select',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8a30871ef2001929410003397023a13249',1,'ogle']]],
+  ['joystick_5fbutton_5fstart',['JOYSTICK_BUTTON_Start',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8a79e663b44613b816ee095a0752ccdd42',1,'ogle']]],
+  ['joystick_5fbutton_5fx',['JOYSTICK_BUTTON_X',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8a3eeb44557834d620990de2668b833c12',1,'ogle']]],
+  ['joystick_5fbutton_5fy',['JOYSTICK_BUTTON_Y',['../namespaceogle.html#a704e38939327cf197723cbde226b78c8a4c8a773ebcf7f5a6b4034d444da8f65b',1,'ogle']]]
+];
