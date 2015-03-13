@@ -1,8 +1,8 @@
 var searchData=
 [
   ['setsource',['SetSource',['../classogle_1_1Shader.html#a3e5e7778946b103b4c17af6949cf6c15',1,'ogle::Shader']]],
-  ['setuniform2f',['SetUniform2f',['../classogle_1_1ShaderProgram.html#a7b2c40ed8510be9ea24b6fe6d8f4a31b',1,'ogle::ShaderProgram']]],
-  ['setxy',['SetXY',['../classogle_1_1GameObject.html#adc88c836987b30fce44a8b9c884ac199',1,'ogle::GameObject']]],
+  ['setuniform2f',['SetUniform2f',['../classogle_1_1ShaderProgram.html#a651393c269caf122e37cacac476e8ec9',1,'ogle::ShaderProgram']]],
+  ['setxy',['SetXY',['../classogle_1_1GameObject.html#af10e68c90f9ffb429810d1e0f9eb724d',1,'ogle::GameObject']]],
   ['shader',['Shader',['../classogle_1_1Shader.html#a1d70c69891a6012dff27719289122f10',1,'ogle::Shader']]],
   ['shaderprogram',['ShaderProgram',['../classogle_1_1ShaderProgram.html#a053b84b477cc16206f0ed4a5ff10afd8',1,'ogle::ShaderProgram']]],
   ['shadertype',['ShaderType',['../classogle_1_1Shader.html#a888fb831e61ef49e47dbf0bab4956d46',1,'ogle::Shader']]],

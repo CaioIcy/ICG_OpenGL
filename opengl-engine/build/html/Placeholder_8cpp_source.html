@@ -211,7 +211,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">void</span> ComputePositionOffsets(<span class="keywordtype">float</span>&amp; fXOffset, <span class="keywordtype">float</span>&amp; fYOffset) {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">void</span> ComputePositionOffsets(<span class="keywordtype">float</span>&amp; fXOffset, <span class="keywordtype">float</span>&amp; fYOffset, <span class="keywordtype">float</span>&amp; fZOffset) {</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> fLoopDuration = 1.0f;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> fScale = 3.14159f * 2.0f / fLoopDuration;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
@@ -219,12 +219,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    fXOffset = cosf(fCurrTimeThroughLoop * fScale) * 0.5f;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    fYOffset = sinf(fCurrTimeThroughLoop * fScale) * 0.5f;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    fZOffset = cosf(fCurrTimeThroughLoop * fScale) * 0.5f;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;} <span class="comment">// namespace</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <a class="code" href="namespaceogle.html#ac1c1c966fca1478d4771317f5b2be2ec">log_info</a>() &lt;&lt; fZOffset;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;} <span class="comment">// namespace</span></div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
@@ -245,49 +245,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keyword">namespace </span>ogle {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#a0b0b2282f20c79890a835838c96ab478">  157</a></span>&#160;<a class="code" href="classogle_1_1Placeholder.html#a0b0b2282f20c79890a835838c96ab478">Placeholder::Placeholder</a>() :</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    m_game_object{<span class="keyword">nullptr</span>}</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;{</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#afaf0eb729f28621588b3837b7f38f682">  162</a></span>&#160;<a class="code" href="classogle_1_1Placeholder.html#afaf0eb729f28621588b3837b7f38f682">Placeholder::~Placeholder</a>() {</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a> != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keyword">delete</span> <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a>;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
-<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#a6484fcb965dea2014090ca051befa408">  168</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classogle_1_1Placeholder.html#a6484fcb965dea2014090ca051befa408">Placeholder::Load</a>() {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="namespaceogle.html#ac1c1c966fca1478d4771317f5b2be2ec">log_info</a>() &lt;&lt; <span class="stringliteral">&quot;Loading STATE placeholder...&quot;</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">namespace </span>ogle {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#a0b0b2282f20c79890a835838c96ab478">  160</a></span>&#160;<a class="code" href="classogle_1_1Placeholder.html#a0b0b2282f20c79890a835838c96ab478">Placeholder::Placeholder</a>() :</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    m_game_object{<span class="keyword">nullptr</span>}</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;{</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#afaf0eb729f28621588b3837b7f38f682">  165</a></span>&#160;<a class="code" href="classogle_1_1Placeholder.html#afaf0eb729f28621588b3837b7f38f682">Placeholder::~Placeholder</a>() {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a> != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keyword">delete</span> <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="comment">// Create program</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a> = <span class="keyword">new</span> <a class="code" href="classogle_1_1GameObject.html">GameObject</a>(<span class="stringliteral">&quot;4_triangle_circle&quot;</span>);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#a7c99a1ea4e071edb309b870b6e72638f">  175</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classogle_1_1Placeholder.html#a7c99a1ea4e071edb309b870b6e72638f">Placeholder::Unload</a>() {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <a class="code" href="namespaceogle.html#ac1c1c966fca1478d4771317f5b2be2ec">log_info</a>() &lt;&lt; <span class="stringliteral">&quot;Unloading STATE placeholder...&quot;</span>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#a6484fcb965dea2014090ca051befa408">  171</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classogle_1_1Placeholder.html#a6484fcb965dea2014090ca051befa408">Placeholder::Load</a>() {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <a class="code" href="namespaceogle.html#ac1c1c966fca1478d4771317f5b2be2ec">log_info</a>() &lt;&lt; <span class="stringliteral">&quot;Loading STATE placeholder...&quot;</span>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="comment">// Create program</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a> = <span class="keyword">new</span> <a class="code" href="classogle_1_1GameObject.html">GameObject</a>(<span class="stringliteral">&quot;4_triangle_circle&quot;</span>);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a>;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
-<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#ae947d69fdddcf53327e82e9f4605f7ab">  182</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classogle_1_1Placeholder.html#ae947d69fdddcf53327e82e9f4605f7ab">Placeholder::Update</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> dt) {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    LogAnyInput();</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#a7c99a1ea4e071edb309b870b6e72638f">  178</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classogle_1_1Placeholder.html#a7c99a1ea4e071edb309b870b6e72638f">Placeholder::Unload</a>() {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <a class="code" href="namespaceogle.html#ac1c1c966fca1478d4771317f5b2be2ec">log_info</a>() &lt;&lt; <span class="stringliteral">&quot;Unloading STATE placeholder...&quot;</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    total_elapsed_time += dt;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordtype">float</span> x_offset = 0.0f;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">float</span> y_offset = 0.0f;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    ComputePositionOffsets(x_offset, y_offset);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a>-&gt;<a class="code" href="classogle_1_1GameObject.html#adc88c836987b30fce44a8b9c884ac199">SetXY</a>(x_offset, y_offset);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;}</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
-<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#a8f7b1eb71bb5f92f5a6899b86be98454">  193</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classogle_1_1Placeholder.html#a8f7b1eb71bb5f92f5a6899b86be98454">Placeholder::Render</a>() {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a>-&gt;<a class="code" href="classogle_1_1GameObject.html#ac142b527ef31631cf9898a5c3f8eda6f">Render</a>();</div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#ae947d69fdddcf53327e82e9f4605f7ab">  185</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classogle_1_1Placeholder.html#ae947d69fdddcf53327e82e9f4605f7ab">Placeholder::Update</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> dt) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    LogAnyInput();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    total_elapsed_time += dt;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordtype">float</span> x_offset = 0.0f;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordtype">float</span> y_offset = 0.0f;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordtype">float</span> z_offset = 0.0f;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    ComputePositionOffsets(x_offset, y_offset, z_offset);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a>-&gt;<a class="code" href="classogle_1_1GameObject.html#af10e68c90f9ffb429810d1e0f9eb724d">SetXY</a>(x_offset, y_offset, z_offset);</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;} <span class="comment">// namespace ogle</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="classogle_1_1Placeholder.html#a8f7b1eb71bb5f92f5a6899b86be98454">  197</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classogle_1_1Placeholder.html#a8f7b1eb71bb5f92f5a6899b86be98454">Placeholder::Render</a>() {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <a class="code" href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">m_game_object</a>-&gt;<a class="code" href="classogle_1_1GameObject.html#ac142b527ef31631cf9898a5c3f8eda6f">Render</a>();</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;} <span class="comment">// namespace ogle</span></div>
 <div class="ttc" id="classogle_1_1Placeholder_html_a52b07f773adca79f823f008a70fe582c"><div class="ttname"><a href="classogle_1_1Placeholder.html#a52b07f773adca79f823f008a70fe582c">ogle::Placeholder::m_game_object</a></div><div class="ttdeci">GameObject * m_game_object</div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8h_source.html#l00055">Placeholder.h:55</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7ae0c4450fcecd547297bfb9d2b91c0841"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7ae0c4450fcecd547297bfb9d2b91c0841">ogle::Start</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00010">InputKeys.h:10</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a8b2636e3be35ef6870a1790d9479bf8b"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a8b2636e3be35ef6870a1790d9479bf8b">ogle::DpadLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00018">InputKeys.h:18</a></div></div>
@@ -295,14 +299,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a69039dc05ad9898a107814b7c0b2ce92"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a69039dc05ad9898a107814b7c0b2ce92">ogle::RightAnalogRight</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00016">InputKeys.h:16</a></div></div>
 <div class="ttc" id="namespaceogle_html_af9ddffbeb9d7fcc027469bbdb9d292bb"><div class="ttname"><a href="namespaceogle.html#af9ddffbeb9d7fcc027469bbdb9d292bb">ogle::log_warn</a></div><div class="ttdeci">constexpr log_function_ptr log_warn</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00086">Logger.h:86</a></div></div>
 <div class="ttc" id="InputHandler_8h_html"><div class="ttname"><a href="InputHandler_8h.html">InputHandler.h</a></div></div>
-<div class="ttc" id="classogle_1_1Placeholder_html_a6484fcb965dea2014090ca051befa408"><div class="ttname"><a href="classogle_1_1Placeholder.html#a6484fcb965dea2014090ca051befa408">ogle::Placeholder::Load</a></div><div class="ttdeci">virtual void Load() override</div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00168">Placeholder.cpp:168</a></div></div>
+<div class="ttc" id="classogle_1_1Placeholder_html_a6484fcb965dea2014090ca051befa408"><div class="ttname"><a href="classogle_1_1Placeholder.html#a6484fcb965dea2014090ca051befa408">ogle::Placeholder::Load</a></div><div class="ttdeci">virtual void Load() override</div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00171">Placeholder.cpp:171</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7aec180a0368a6ee3fc19d116cfb2df24d"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7aec180a0368a6ee3fc19d116cfb2df24d">ogle::R3</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00012">InputKeys.h:12</a></div></div>
-<div class="ttc" id="classogle_1_1Placeholder_html_ae947d69fdddcf53327e82e9f4605f7ab"><div class="ttname"><a href="classogle_1_1Placeholder.html#ae947d69fdddcf53327e82e9f4605f7ab">ogle::Placeholder::Update</a></div><div class="ttdeci">virtual void Update(const double dt) override</div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00182">Placeholder.cpp:182</a></div></div>
+<div class="ttc" id="classogle_1_1Placeholder_html_ae947d69fdddcf53327e82e9f4605f7ab"><div class="ttname"><a href="classogle_1_1Placeholder.html#ae947d69fdddcf53327e82e9f4605f7ab">ogle::Placeholder::Update</a></div><div class="ttdeci">virtual void Update(const double dt) override</div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00185">Placeholder.cpp:185</a></div></div>
 <div class="ttc" id="classogle_1_1GameObject_html"><div class="ttname"><a href="classogle_1_1GameObject.html">ogle::GameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="GameObject_8h_source.html#l00012">GameObject.h:12</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7ac2a1a8584acabb66c28dfb131cc264dd"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7ac2a1a8584acabb66c28dfb131cc264dd">ogle::LeftAnalogDown</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00013">InputKeys.h:13</a></div></div>
-<div class="ttc" id="classogle_1_1Placeholder_html_a0b0b2282f20c79890a835838c96ab478"><div class="ttname"><a href="classogle_1_1Placeholder.html#a0b0b2282f20c79890a835838c96ab478">ogle::Placeholder::Placeholder</a></div><div class="ttdeci">Placeholder()</div><div class="ttdoc">The constructor. </div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00157">Placeholder.cpp:157</a></div></div>
+<div class="ttc" id="classogle_1_1Placeholder_html_a0b0b2282f20c79890a835838c96ab478"><div class="ttname"><a href="classogle_1_1Placeholder.html#a0b0b2282f20c79890a835838c96ab478">ogle::Placeholder::Placeholder</a></div><div class="ttdeci">Placeholder()</div><div class="ttdoc">The constructor. </div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00160">Placeholder.cpp:160</a></div></div>
 <div class="ttc" id="VertexArray_8h_html"><div class="ttname"><a href="VertexArray_8h.html">VertexArray.h</a></div></div>
-<div class="ttc" id="classogle_1_1Placeholder_html_a8f7b1eb71bb5f92f5a6899b86be98454"><div class="ttname"><a href="classogle_1_1Placeholder.html#a8f7b1eb71bb5f92f5a6899b86be98454">ogle::Placeholder::Render</a></div><div class="ttdeci">virtual void Render() override</div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00193">Placeholder.cpp:193</a></div></div>
+<div class="ttc" id="classogle_1_1Placeholder_html_a8f7b1eb71bb5f92f5a6899b86be98454"><div class="ttname"><a href="classogle_1_1Placeholder.html#a8f7b1eb71bb5f92f5a6899b86be98454">ogle::Placeholder::Render</a></div><div class="ttdeci">virtual void Render() override</div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00197">Placeholder.cpp:197</a></div></div>
 <div class="ttc" id="namespaceogle_html_ac1c1c966fca1478d4771317f5b2be2ec"><div class="ttname"><a href="namespaceogle.html#ac1c1c966fca1478d4771317f5b2be2ec">ogle::log_info</a></div><div class="ttdeci">constexpr log_function_ptr log_info</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00087">Logger.h:87</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a7af3a9e690f200891b726577509d37a2"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a7af3a9e690f200891b726577509d37a2">ogle::X</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00009">InputKeys.h:9</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7ace372247f866e81476afbb52d14f1177"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7ace372247f866e81476afbb52d14f1177">ogle::DpadUp</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00017">InputKeys.h:17</a></div></div>
@@ -311,21 +315,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classogle_1_1InputHandler_html_a13a3377a5867dc1309e7ed79d57be298"><div class="ttname"><a href="classogle_1_1InputHandler.html#a13a3377a5867dc1309e7ed79d57be298">ogle::InputHandler::IsButtonDown</a></div><div class="ttdeci">static bool IsButtonDown(const Buttons button)</div><div class="ttdef"><b>Definition:</b> <a href="InputHandler_8cpp_source.html#l00042">InputHandler.cpp:42</a></div></div>
 <div class="ttc" id="GameObject_8h_html"><div class="ttname"><a href="GameObject_8h.html">GameObject.h</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a55d99193c829c0f7eda5d64908fb0181"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a55d99193c829c0f7eda5d64908fb0181">ogle::RightAnalogLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00016">InputKeys.h:16</a></div></div>
-<div class="ttc" id="classogle_1_1Placeholder_html_afaf0eb729f28621588b3837b7f38f682"><div class="ttname"><a href="classogle_1_1Placeholder.html#afaf0eb729f28621588b3837b7f38f682">ogle::Placeholder::~Placeholder</a></div><div class="ttdeci">~Placeholder()</div><div class="ttdoc">The destructor. </div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00162">Placeholder.cpp:162</a></div></div>
+<div class="ttc" id="classogle_1_1Placeholder_html_afaf0eb729f28621588b3837b7f38f682"><div class="ttname"><a href="classogle_1_1Placeholder.html#afaf0eb729f28621588b3837b7f38f682">ogle::Placeholder::~Placeholder</a></div><div class="ttdeci">~Placeholder()</div><div class="ttdoc">The destructor. </div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00165">Placeholder.cpp:165</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a12798652ee9c32019153a29fc8dc5954"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a12798652ee9c32019153a29fc8dc5954">ogle::Y</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00009">InputKeys.h:9</a></div></div>
 <div class="ttc" id="Assert_8h_html"><div class="ttname"><a href="Assert_8h.html">Assert.h</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a93701c1b7a1be41322980495b5842201"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a93701c1b7a1be41322980495b5842201">ogle::LeftAnalogRight</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00014">InputKeys.h:14</a></div></div>
 <div class="ttc" id="classogle_1_1GameObject_html_ac142b527ef31631cf9898a5c3f8eda6f"><div class="ttname"><a href="classogle_1_1GameObject.html#ac142b527ef31631cf9898a5c3f8eda6f">ogle::GameObject::Render</a></div><div class="ttdeci">void Render()</div><div class="ttdef"><b>Definition:</b> <a href="GameObject_8cpp_source.html#l00018">GameObject.cpp:18</a></div></div>
+<div class="ttc" id="classogle_1_1GameObject_html_af10e68c90f9ffb429810d1e0f9eb724d"><div class="ttname"><a href="classogle_1_1GameObject.html#af10e68c90f9ffb429810d1e0f9eb724d">ogle::GameObject::SetXY</a></div><div class="ttdeci">void SetXY(const float x, const float y, const float z)</div><div class="ttdef"><b>Definition:</b> <a href="GameObject_8cpp_source.html#l00024">GameObject.cpp:24</a></div></div>
 <div class="ttc" id="Logger_8h_html"><div class="ttname"><a href="Logger_8h.html">Logger.h</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a587ab5a6a7f4a3c3db48c3ab5b02209f"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a587ab5a6a7f4a3c3db48c3ab5b02209f">ogle::L2</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00019">InputKeys.h:19</a></div></div>
-<div class="ttc" id="classogle_1_1Placeholder_html_a7c99a1ea4e071edb309b870b6e72638f"><div class="ttname"><a href="classogle_1_1Placeholder.html#a7c99a1ea4e071edb309b870b6e72638f">ogle::Placeholder::Unload</a></div><div class="ttdeci">virtual void Unload() override</div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00175">Placeholder.cpp:175</a></div></div>
+<div class="ttc" id="classogle_1_1Placeholder_html_a7c99a1ea4e071edb309b870b6e72638f"><div class="ttname"><a href="classogle_1_1Placeholder.html#a7c99a1ea4e071edb309b870b6e72638f">ogle::Placeholder::Unload</a></div><div class="ttdeci">virtual void Unload() override</div><div class="ttdef"><b>Definition:</b> <a href="Placeholder_8cpp_source.html#l00178">Placeholder.cpp:178</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a44ae1dde4592af1bca95fa56c40c7c3f"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a44ae1dde4592af1bca95fa56c40c7c3f">ogle::A</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00009">InputKeys.h:9</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a27f90b50f8cd9b715259a9200c1dd3e2"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a27f90b50f8cd9b715259a9200c1dd3e2">ogle::Select</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00010">InputKeys.h:10</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7ad5fe46fd34b991e5a24736ad324c6ac9"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7ad5fe46fd34b991e5a24736ad324c6ac9">ogle::R2</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00020">InputKeys.h:20</a></div></div>
 <div class="ttc" id="Placeholder_8h_html"><div class="ttname"><a href="Placeholder_8h.html">Placeholder.h</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a96ae7874d3e0a25079d67be83e02b25d"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a96ae7874d3e0a25079d67be83e02b25d">ogle::R1</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00011">InputKeys.h:11</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a7f9d0ea8ac2bbae429f8d6680559a819"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a7f9d0ea8ac2bbae429f8d6680559a819">ogle::L1</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00011">InputKeys.h:11</a></div></div>
-<div class="ttc" id="classogle_1_1GameObject_html_adc88c836987b30fce44a8b9c884ac199"><div class="ttname"><a href="classogle_1_1GameObject.html#adc88c836987b30fce44a8b9c884ac199">ogle::GameObject::SetXY</a></div><div class="ttdeci">void SetXY(const float x, const float y)</div><div class="ttdef"><b>Definition:</b> <a href="GameObject_8cpp_source.html#l00024">GameObject.cpp:24</a></div></div>
 <div class="ttc" id="ShaderProgram_8h_html"><div class="ttname"><a href="ShaderProgram_8h.html">ShaderProgram.h</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a42bff9dc42dd162a17fd3160dfec1f0c"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a42bff9dc42dd162a17fd3160dfec1f0c">ogle::L3</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00012">InputKeys.h:12</a></div></div>
 <div class="ttc" id="namespaceogle_html_a8dfcccc3134474b4962ea47abf10f8c7a60f7970d6ee2aab0f2c38ba06e0701c9"><div class="ttname"><a href="namespaceogle.html#a8dfcccc3134474b4962ea47abf10f8c7a60f7970d6ee2aab0f2c38ba06e0701c9">ogle::RightAnalogUp</a></div><div class="ttdef"><b>Definition:</b> <a href="InputKeys_8h_source.html#l00015">InputKeys.h:15</a></div></div>
@@ -336,7 +340,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 11 2015 22:04:09 for Default_Project_Name by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 13 2015 15:57:43 for Default_Project_Name by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -35,10 +35,10 @@ void ShaderProgram::Disable() {
 	m_enabled = false;
 }
 
-void ShaderProgram::SetUniform2f(const std::string& attrib_name, const float x, const float y) {
+void ShaderProgram::SetUniform2f(const std::string& attrib_name, const float x, const float y, const float z) {
 	ASSERT(m_enabled == true, "The program has not been enabled.");
 	const GLint location = m_location_cache->Get(attrib_name);
-	glUniform2f(location, x, y);
+	glUniform3f(location, x, y, z);
 }
 
 void ShaderProgram::Create() {

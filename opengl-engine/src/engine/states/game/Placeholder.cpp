@@ -118,7 +118,7 @@ void LogAnyInput() {
 	}
 }
 
-void ComputePositionOffsets(float& fXOffset, float& fYOffset) {
+void ComputePositionOffsets(float& fXOffset, float& fYOffset, float& fZOffset) {
     const float fLoopDuration = 1.0f;
 	const float fScale = 3.14159f * 2.0f / fLoopDuration;
 
@@ -126,6 +126,9 @@ void ComputePositionOffsets(float& fXOffset, float& fYOffset) {
 
 	fXOffset = cosf(fCurrTimeThroughLoop * fScale) * 0.5f;
 	fYOffset = sinf(fCurrTimeThroughLoop * fScale) * 0.5f;
+	fZOffset = cosf(fCurrTimeThroughLoop * fScale) * 0.5f;
+
+	log_info() << fZOffset;
 }
 
 } // namespace
@@ -185,9 +188,10 @@ void Placeholder::Update(const double dt) {
 	total_elapsed_time += dt;
 	float x_offset = 0.0f;
 	float y_offset = 0.0f;
-	ComputePositionOffsets(x_offset, y_offset);
+	float z_offset = 0.0f;
+	ComputePositionOffsets(x_offset, y_offset, z_offset);
 
-	m_game_object->SetXY(x_offset, y_offset);
+	m_game_object->SetXY(x_offset, y_offset, z_offset);
 }
 
 void Placeholder::Render() {
