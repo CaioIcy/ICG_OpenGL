@@ -1,7 +1,0 @@
-<map id="ogle::InputHandler::PollKeyInputQueue" name="ogle::InputHandler::PollKeyInputQueue">
-<area shape="rect" id="node2" href="$classogle_1_1InputHandler.html#ac9522b72ec3de73a815937e0e1a0c495" title="ogle::InputHandler\l::PollInput" alt="" coords="197,5,325,46"/>
-<area shape="rect" id="node3" href="$classogle_1_1Game.html#a05d44a151651dbdffed6f793aff04126" title="ogle::Game::Update" alt="" coords="373,12,512,39"/>
-<area shape="rect" id="node4" href="$classogle_1_1Game.html#ad5425ddf6f665f738364a2f7a28eb82f" title="The main game loop. " alt="" coords="561,12,682,39"/>
-<area shape="rect" id="node5" href="$classogle_1_1Game.html#aa3234504f6142603b15ecd822c8e3c75" title="Loads, runs, and eventually unloads the game. " alt="" coords="731,12,856,39"/>
-<area shape="rect" id="node6" href="$main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="904,12,955,39"/>
-</map>

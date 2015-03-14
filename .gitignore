@@ -48,6 +48,7 @@ cmake_install.cmake
 # ------------------- MISC -------------------
 
 build/*
+opengl-engine/*
 *~
 
 .*.kate-swp

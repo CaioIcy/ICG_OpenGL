@@ -1,5 +1,0 @@
-<map id="ogle::ShaderProgram::Link" name="ogle::ShaderProgram::Link">
-<area shape="rect" id="node2" href="$namespaceogle_1_1gllog.html#ad02813a3e634459c4dd67730e63b3f88" title="ogle::gllog::CheckGlErrors" alt="" coords="390,30,565,57"/>
-<area shape="rect" id="node3" href="$classogle_1_1ShaderProgram.html#ae7006ae09c0835d6a61dcd45feb58705" title="ogle::ShaderProgram\l::SuccessfulLinkage" alt="" coords="197,23,341,64"/>
-<area shape="rect" id="node4" href="$classogle_1_1ShaderProgram.html#a20fcff81b0d8443407939c75955becdf" title="ogle::ShaderProgram\l::LogLinkageError" alt="" coords="197,88,341,129"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="ogle::StateGame::Load" name="ogle::StateGame::Load">
-<area shape="rect" id="node2" href="$classogle_1_1StateManager.html#a28d6a1eb511a06a2dad81c7883ea3eae" title="Sets the current game state. " alt="" coords="211,5,346,46"/>
-<area shape="rect" id="node3" href="$classogle_1_1StateManager.html#a61ba8b4d5a0e634aee1d6fc66194b390" title="Loads first state of the game. " alt="" coords="211,70,346,111"/>
-</map>

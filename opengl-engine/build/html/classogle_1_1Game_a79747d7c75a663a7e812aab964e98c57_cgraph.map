@@ -1,8 +1,0 @@
-<map id="ogle::Game::Load" name="ogle::Game::Load">
-<area shape="rect" id="node2" href="$namespaceogle_1_1systems.html#ab4e06eca609788e2cced02a732788b37" title="ogle::systems::InitializeGlfw" alt="" coords="181,5,368,32"/>
-<area shape="rect" id="node3" href="$namespaceogle_1_1systems.html#a065b47e04bc06b48ff9ddb46be716123" title="ogle::systems::Initialize\lSdlImage" alt="" coords="195,57,355,98"/>
-<area shape="rect" id="node4" href="$classogle_1_1InputHandler.html#a2288b02311b440ec2a0c1a5adfdc415b" title="ogle::InputHandler\l::Initialize" alt="" coords="211,122,339,163"/>
-<area shape="rect" id="node5" href="$namespaceogle_1_1systems.html#a431e8f6c9d6d29a51880bb1baf0c9008" title="ogle::systems::InitializeGlew" alt="" coords="179,188,370,215"/>
-<area shape="rect" id="node7" href="$classogle_1_1InputHandler.html#ad5c81be9d7ddc11e7d10e57efbdc1163" title="ogle::InputHandler\l::KeyActionCallback" alt="" coords="204,239,345,281"/>
-<area shape="rect" id="node6" href="$namespaceogle_1_1gllog.html#ad02813a3e634459c4dd67730e63b3f88" title="ogle::gllog::CheckGlErrors" alt="" coords="419,188,594,215"/>
-</map>
