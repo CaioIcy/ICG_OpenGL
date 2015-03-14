@@ -21,7 +21,7 @@ class ShaderProgram {
 
 		void Enable();
 		void Disable();
-		void SetUniform2f(const std::string& attrib_name, const float x, const float y);
+		void SetUniform2f(const std::string& attrib_name, const float x, const float y, const float z);
 
 	private:
 		void Create();
