@@ -65,6 +65,7 @@ CTestTestfile.cmake
 test/gtest/
 *_exec
 *_GTest
+prog
 
 *.log
 log
