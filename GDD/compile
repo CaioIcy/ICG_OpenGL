@@ -1,0 +1,4 @@
+#!/bin/bash
+pdflatex pi1.tex
+bibtex pi1
+pdflatex pi1.tex x 2
