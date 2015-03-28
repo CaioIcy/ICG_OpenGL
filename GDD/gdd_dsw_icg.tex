@@ -10,6 +10,18 @@
 
 \begin{document}
 
+\newcommand\BackgroundPicMe{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,%
+keepaspectratio = false]{figuras/background.jpg}%
+\vfill
+}}}
+
+\AddToShipoutPicture{\BackgroundPicMe}
+
 \frenchspacing
 \imprimircapa
 \imprimirfolhaderosto*
