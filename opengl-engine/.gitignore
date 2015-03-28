@@ -1,0 +1,18 @@
+# ------------------- CMAKE -------------------
+
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+install_manifest.txt
+cmake_install.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+CTestTestfile.cmake
+
+# -----------------
+
+build/*
+doc/Doxyfile
+doc/html/
+test/gtest/

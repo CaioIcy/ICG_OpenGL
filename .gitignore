@@ -36,19 +36,8 @@
 *.x86_64
 *.hex
 
-# ------------------- CMAKE -------------------
-
-CMakeCache.txt
-CMakeFiles
-Makefile
-cmake_install.cmake
-install_manifest.txt
-cmake_install.cmake
-
 # ------------------- MISC -------------------
 
-build/*
-opengl-engine/*
 *~
 
 .*.kate-swp
@@ -56,13 +45,6 @@ opengl-engine/*
 
 *.bak
 
-CPackConfig.cmake
-CPackSourceConfig.cmake
-doc/Doxyfile
-doc/html/
-CTestTestfile.cmake
-
-test/gtest/
 *_exec
 *_GTest
 prog
