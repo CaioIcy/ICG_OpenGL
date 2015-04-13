@@ -175,7 +175,7 @@ void Game::Render() {
 
     m_impl->state_manager.CurrentState()->Render();
 
-	if(!gllog::CheckGlErrors("Before swapping buffers for rendering.")) {
+	if(!CHECK_GL_ERRORS("Before swapping buffers for rendering.")) {
 		glfwSwapBuffers(m_impl->window);
 	}
 }

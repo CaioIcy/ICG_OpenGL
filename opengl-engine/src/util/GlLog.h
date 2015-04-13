@@ -2,6 +2,12 @@
 
 #include <string>
 
+#ifdef NDEBUG
+#	define CHECK_GL_ERRORS(x)
+#else
+#	define CHECK_GL_ERRORS(x) gllog::CheckGlErrors(x)
+#endif
+
 namespace ogle {
 namespace gllog {
 

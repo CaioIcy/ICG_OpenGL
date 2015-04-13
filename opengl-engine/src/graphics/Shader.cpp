@@ -61,7 +61,7 @@ Shader::Shader(const std::string& file_name, GLenum shader_type) :
 
 Shader::~Shader() {
 	glDeleteShader(m_object);
-	gllog::CheckGlErrors("Destroying a shader.");
+	CHECK_GL_ERRORS("Destroying a shader.");
 }
 
 std::string Shader::FileName() const {
@@ -78,7 +78,7 @@ GLenum Shader::ShaderType() const {
 
 void Shader::Create() {
 	m_object = glCreateShader(m_shader_type);
-	gllog::CheckGlErrors("Creating a shader.");
+	CHECK_GL_ERRORS("Creating a shader.");
 
 	ASSERT(m_object != 0, "Could not create shader.");
 }
@@ -91,14 +91,14 @@ void Shader::SetSource() const {
 	const char* shader_code = shader_code_str.c_str();
 
 	glShaderSource(m_object, 1, &shader_code, nullptr);
-	gllog::CheckGlErrors("Setting a shader's source.");
+	CHECK_GL_ERRORS("Setting a shader's source.");
 }
 
 void Shader::Compile() const {
 	ASSERT(m_object != 0, "Can't compile an invalid shader.");
 
 	glCompileShader(m_object);
-	gllog::CheckGlErrors("Compiling a shader.");
+	CHECK_GL_ERRORS("Compiling a shader.");
 
 	CheckCompilationStatus();
 }
@@ -108,17 +108,17 @@ void Shader::CheckCompilationStatus() const {
 
 	GLint compile_status;
 	glGetShaderiv(m_object, GL_COMPILE_STATUS, &compile_status);
-	gllog::CheckGlErrors("Getting the shader compile status .");
+	CHECK_GL_ERRORS("Getting the shader compile status .");
 
 	// Compilation failure.
 	if(compile_status != GL_TRUE) {
 		GLint info_log_length;
 		glGetShaderiv(m_object, GL_INFO_LOG_LENGTH, &info_log_length);
-		gllog::CheckGlErrors("Getting the shader compilation info log length.");
+		CHECK_GL_ERRORS("Getting the shader compilation info log length.");
 
 		GLchar* str_info_log = new GLchar[info_log_length + 1];
 		glGetShaderInfoLog(m_object, info_log_length, nullptr, str_info_log);
-		gllog::CheckGlErrors("Getting the shader compilation info log.");
+		CHECK_GL_ERRORS("Getting the shader compilation info log.");
 
 		log_error() << "Shader compilation failure in " << ShaderTypeToString(m_shader_type)
 			<< " shader: " << str_info_log;

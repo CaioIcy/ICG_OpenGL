@@ -21,7 +21,7 @@ ShaderProgram::ShaderProgram(const std::string& file_name) :
 
 ShaderProgram::~ShaderProgram() {
 	glDeleteProgram(m_object);
-	gllog::CheckGlErrors("Destroying a program.");
+	CHECK_GL_ERRORS("Destroying a program.");
 }
 
 void ShaderProgram::Enable() {
@@ -59,14 +59,14 @@ void ShaderProgram::AttachShader(const std::string& file_name) {
 		GL_FRAGMENT_SHADER));
 	glAttachShader(m_object, m_shaders.back()->Object());
 
-	gllog::CheckGlErrors("Attaching shaders to a program.");
+	CHECK_GL_ERRORS("Attaching shaders to a program.");
 }
 
 void ShaderProgram::Link() {
 	ASSERT(m_linked == false, "The program has already been linked.");
 
 	glLinkProgram(m_object);
-	gllog::CheckGlErrors("Linking a program.");
+	CHECK_GL_ERRORS("Linking a program.");
 
 	for(const auto& shader : m_shaders) {
 		glDetachShader(m_object, shader->Object());
@@ -84,7 +84,7 @@ void ShaderProgram::Link() {
 bool ShaderProgram::SuccessfulLinkage() const {
 	GLint link_status = 0;
 	glGetProgramiv(m_object, GL_LINK_STATUS, &link_status);
-	gllog::CheckGlErrors("Getting program link status.");
+	CHECK_GL_ERRORS("Getting program link status.");
 
 	return (link_status == GL_TRUE);
 }
@@ -94,11 +94,11 @@ void ShaderProgram::LogLinkageError() const {
 
 	GLint info_log_length;
 	glGetProgramiv(m_object, GL_INFO_LOG_LENGTH, &info_log_length);
-	gllog::CheckGlErrors("Getting program compile log length.");
+	CHECK_GL_ERRORS("Getting program compile log length.");
 
 	GLchar* str_info_log = new GLchar[info_log_length + 1];
 	glGetProgramInfoLog(m_object, info_log_length, nullptr, str_info_log);
-	gllog::CheckGlErrors("Getting program compile log.");
+	CHECK_GL_ERRORS("Getting program compile log.");
 
 	log_error() << "ShaderProgram linker failure: " << str_info_log;
 	delete[] str_info_log;

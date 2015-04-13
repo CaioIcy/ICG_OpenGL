@@ -73,7 +73,7 @@ void InitializeGlew() {
 		ASSERT(glew_initialized == GLEW_OK, "Couldn't start GLEW.");
 	}
 
-    gllog::CheckGlErrors("Resetting error flag due to GLEW invalid enum.");
+    CHECK_GL_ERRORS("Resetting error flag due to GLEW invalid enum.");
 
 	log_debug() << "Status: Using GLEW " <<  glewGetString(GLEW_VERSION);
 

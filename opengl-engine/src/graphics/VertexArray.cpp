@@ -36,7 +36,7 @@ VertexArray::VertexArray(const float* const vertices, const size_t size_vertices
 	// VAO
 	glGenVertexArrays(1, &m_vao);
 	glBindVertexArray(m_vao);
-	gllog::CheckGlErrors("Creating a vertex array VAO.");
+	CHECK_GL_ERRORS("Creating a vertex array VAO.");
 
 	// VBO
 	glGenBuffers(1, &m_vbo);
@@ -44,7 +44,7 @@ VertexArray::VertexArray(const float* const vertices, const size_t size_vertices
 	glBufferData(GL_ARRAY_BUFFER, size_vertices, vertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
-	gllog::CheckGlErrors("Creating a vertex array VBO.");
+	CHECK_GL_ERRORS("Creating a vertex array VBO.");
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	Unbind();
@@ -66,7 +66,7 @@ void VertexArray::Unbind() {
 
 void VertexArray::Draw() {
 	glDrawArrays(GL_TRIANGLES, 0, 3);
-	gllog::CheckGlErrors("Rendering the vertex array.");
+	CHECK_GL_ERRORS("Rendering the vertex array.");
 }
 
 
