@@ -3,12 +3,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <SDL2/SDL_image.h>
-#include <gflags/gflags.h>
+// #include <gflags/gflags.h>
 #include "util/Assert.h"
 #include "util/Logger.h"
 #include "util/GlLog.h"
 
-DECLARE_bool(exp);
+// DECLARE_bool(exp);
 
 namespace {
 
@@ -58,14 +58,15 @@ void InitializeGlfw() {
 void InitializeGlew() {
 	log_debug() << "------- Initializing GLEW -------";
 	
-	if(FLAGS_exp) {
-		glewExperimental = GL_TRUE;
-		log_debug() << "Using glewExperimental.";
-	}
-	else {
-		glewExperimental = GL_FALSE;
-		log_debug() << "Not using glewExperimental.";
-	}
+	// GFLAGS
+	// if(FLAGS_exp) {
+	// 	glewExperimental = GL_TRUE;
+	// 	log_debug() << "Using glewExperimental.";
+	// }
+	// else {
+	// 	glewExperimental = GL_FALSE;
+	// 	log_debug() << "Not using glewExperimental.";
+	// }
 
 	GLenum glew_initialized = glewInit();
 	if (glew_initialized != GLEW_OK) {

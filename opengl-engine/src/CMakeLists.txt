@@ -16,7 +16,7 @@ find_package(GLEW REQUIRED)
 find_package(GLM REQUIRED)
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
-find_package(gflags REQUIRED)
+# find_package(gflags REQUIRED)
 
 ###################################################################
 # Adding warning and standard flags here so we don't get an insane amount of warnings from
@@ -39,7 +39,7 @@ target_link_libraries(${ExecTarget}
 	${GLEW_LIBRARIES}
 	${SDL2_LIBRARY}
 	${SDL2_IMAGE_LIBRARY}
-	gflags
+	# gflags
 )
 
 include_directories(
@@ -48,7 +48,7 @@ include_directories(
 	${GLEW_INCLUDE_DIRS}
 	${GLM_INCLUDE_DIRS}
 	${SDL2_IMAGE_INCLUDE_DIR}
-	${gflags_include_dir}
+	# ${gflags_include_dir}
 )
 
 # If built with enabled timed run flag (from .travis.yml)
