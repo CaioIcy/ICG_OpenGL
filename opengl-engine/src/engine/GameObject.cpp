@@ -1,33 +1,39 @@
 #include "engine/GameObject.h"
 #include "graphics/ShaderProgram.h"
-#include "graphics/VertexArray.h"
 
 namespace ogle {
 
-GameObject::GameObject(const std::string shader_file_name) :
+GameObject::GameObject(const std::string shader_file_name, const float* const vertices,
+		const size_t size_vertices) :
 	m_program{std::make_unique<ShaderProgram>(shader_file_name)},
-	m_vertex_array{std::make_unique<VertexArray>()},
-	m_position{0, 0, 0, 0}
+	// m_vertex_array{std::make_unique<VertexArray>(vertices, size_vertices)},
+	m_position{0, 0, 0}
 {
 }
 
 void GameObject::Update(const double dt) {
-
+	m_program->Enable();
+	// ?
+	m_program->Disable();
 }
 
 void GameObject::Render() {
 	m_program->Enable();
-	m_vertex_array->Render();
+	// m_vertex_array->Render();
 	m_program->Disable();
 }
 
-void GameObject::SetXY(const float x, const float y, const float z) {
+void GameObject::SetX(const float x) {
 	m_position.x = x;
-	m_position.y = y;
-	m_position.z = z;
+}
 
+void GameObject::SetY(const float y) {
+	m_position.y = y;
+}
+
+void GameObject::SetTime(const float time) {
 	m_program->Enable();
-	m_program->SetUniform2f("offset", m_position.x, m_position.y, m_position.z);
+	m_program->SetUniform1f("time", time);
 	m_program->Disable();
 }
 

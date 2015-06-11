@@ -7,22 +7,25 @@
 namespace ogle {
 
 class ShaderProgram;
-class VertexArray;
+// class VertexArray;
 
 class GameObject {
 
 	public:
-		GameObject(const std::string shader_file_name);
+		GameObject(const std::string shader_file_name, const float* const vertices,
+			const size_t size_vertices);
 
 		void Update(const double dt);
 		void Render();
 
-		void SetXY(const float x, const float y, const float z);
+		void SetX(const float x);
+		void SetY(const float y);
+		void SetTime(const float time); //delete
 
 	private:
 		std::unique_ptr<ShaderProgram> m_program;
-		std::unique_ptr<VertexArray> m_vertex_array;
-		glm::vec4 m_position;
+		// std::unique_ptr<VertexArray> m_vertex_array;
+		glm::vec3 m_position;
 };
 
 } // namespace ogle

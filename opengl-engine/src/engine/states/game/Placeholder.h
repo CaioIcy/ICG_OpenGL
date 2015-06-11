@@ -2,10 +2,13 @@
 
 #include <GL/glew.h>
 #include "engine/StateGame.h"
+#include "graphics/Renderable.h"
+#include "graphics/Renderer.h"
+#include "math/Math.h"
 
 namespace ogle {
 
-class GameObject;
+class ShaderProgram;
 
 /**
 * @brief The state used for testing the engine.
@@ -52,7 +55,9 @@ class Placeholder : public StateGame {
 		virtual void Render() override;
 
 	private:
-		GameObject* m_game_object;
+		Renderable* m_renderable;
+		mat4 m_full_transform;
+		ShaderProgram* m_program;
 };
 
 } // namespace ogle

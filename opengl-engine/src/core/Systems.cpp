@@ -1,28 +1,28 @@
 #include "core/Systems.h"
-#include <cstdlib>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <SDL2/SDL_image.h>
-// #include <gflags/gflags.h>
+#include <gflags/gflags.h>
 #include "util/Assert.h"
 #include "util/Logger.h"
 #include "util/GlLog.h"
 
-// DECLARE_bool(exp);
+DECLARE_bool(exp);
 
 namespace {
+using namespace ogle;
 
 using AtExitFunction = void (*) ();
 
 void RegisterFunctionForExits(AtExitFunction function, const char* description) {
 	const int k_registered_atexit = std::atexit(function);
 	if(k_registered_atexit != 0){
-		ogle::log_error() << "Failed to register " << description << " to exit.";
+		log_error() << "Failed to register " << description << " to exit.";
 	}
 
 	const int k_registered_at_quick_exit = std::at_quick_exit(function);
 	if(k_registered_at_quick_exit != 0){
-		ogle::log_error() << "Failed to register " << description << " to quick_exit.";
+		log_error() << "Failed to register " << description << " to quick_exit.";
 	}
 }
 
@@ -57,24 +57,20 @@ void InitializeGlfw() {
 
 void InitializeGlew() {
 	log_debug() << "------- Initializing GLEW -------";
-	
-	// GFLAGS
-	// if(FLAGS_exp) {
-	// 	glewExperimental = GL_TRUE;
-	// 	log_debug() << "Using glewExperimental.";
-	// }
-	// else {
-	// 	glewExperimental = GL_FALSE;
-	// 	log_debug() << "Not using glewExperimental.";
-	// }
 
-	GLenum glew_initialized = glewInit();
-	if (glew_initialized != GLEW_OK) {
-		log_error() << "GLEW error: " <<  glewGetErrorString(glew_initialized);
-		ASSERT(glew_initialized == GLEW_OK, "Couldn't start GLEW.");
+	if(FLAGS_exp) {
+		glewExperimental = GL_TRUE;
+		log_debug() << "Using glewExperimental.";
 	}
+	else {
+		glewExperimental = GL_FALSE;
+		log_debug() << "Not using glewExperimental.";
+	}
+	
+	GLenum glew_initialized = glewInit();
+	ASSERTF(glew_initialized == GLEW_OK, "Couldn't start GLEW. Error: %s", glewGetErrorString(glew_initialized));
 
-    CHECK_GL_ERRORS("Resetting error flag due to GLEW invalid enum.");
+    gllog::CheckGlErrors("Resetting error flag due to GLEW invalid enum.");
 
 	log_debug() << "Status: Using GLEW " <<  glewGetString(GLEW_VERSION);
 

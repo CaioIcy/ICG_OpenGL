@@ -8,25 +8,25 @@ function attention_echo {
 }
 
 # Default project name (no spaces)
-NAME_PROJECT="Default_Project_Name"
+NAME_PROJECT="ogle"
 # If there is a T_NAME_PROJECT, assign it to NAME_PROJECT
-if [ ! -z $T_NAME_PROJECT ]
-then
-	NAME_PROJECT=${T_NAME_PROJECT}
-else
-	attention_echo "No T_NAME_PROJECT set"
-	echo "Using '$NAME_PROJECT' as project name"
-fi
+# if [ ! -z $T_NAME_PROJECT ]
+# then
+# 	NAME_PROJECT=${T_NAME_PROJECT}
+# else
+# 	attention_echo "No T_NAME_PROJECT set"
+# 	echo "Using '$NAME_PROJECT' as project name"
+# fi
 
 # Run with timed run or not
-TIMED_RUN="OFF"
-# If there is a T_DO_TIMED_RUN, assign it to TIMED_RUN
-if [ ! -z $T_DO_TIMED_RUN ]
-then
-	TIMED_RUN=${T_DO_TIMED_RUN}
-fi
+# TIMED_RUN="OFF"
+# # If there is a T_DO_TIMED_RUN, assign it to TIMED_RUN
+# if [ ! -z $T_DO_TIMED_RUN ]
+# then
+# 	TIMED_RUN=${T_DO_TIMED_RUN}
+# fi
 
-attention_echo "TIMED_RUN='$TIMED_RUN'"
+# attention_echo "TIMED_RUN='$TIMED_RUN'"
 
 # The possible arguments to pass to this script
 ARG_BUILD_DEBUG="debug"
@@ -47,6 +47,7 @@ function build {
 		cmake -DSH_NAME_PROJECT=${NAME_PROJECT}\
 			-DCMAKE_BUILD_TYPE=Debug\
 			-DMY_TIMED_RUN_ENABLED=${TIMED_RUN}\
+			-DMY_TESTS_ENABLED=OFF\
 			${DIR_PROJECT_ROOT} || exit $?
 
 	# Target is for RELEASE
@@ -56,6 +57,7 @@ function build {
 		cmake -DSH_NAME_PROJECT=${NAME_PROJECT}\
 			-DCMAKE_BUILD_TYPE=Release\
 			-DMY_TIMED_RUN_ENABLED=${TIMED_RUN}\
+			-DMY_TESTS_ENABLED=OFF\
 			${DIR_PROJECT_ROOT} || exit $?
 
 	# Invalid target for argument
@@ -92,7 +94,7 @@ function prepare_build {
 
 function clean {
 	echo "Cleaning build/ folder..."
-	rm -rf build/ callgrind.out.* cachegrind.out.* valgrind.log output.svg
+	rm -rf build/ callgrind.out.* cachegrind.out.* valgrind.log output.svg ogle_exec
 	success_exit
 }
 

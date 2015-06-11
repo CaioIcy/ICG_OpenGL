@@ -1,10 +1,9 @@
 #pragma once
 
-// #include <vector>
+#include "graphics/Renderer.h"
+#include <vector>
 
 namespace ogle {
-
-// class GameObject;
 
 /**
 * @brief Parent class for other game states.
@@ -15,7 +14,7 @@ class StateGame {
 		/**
 		* @brief The destructor.
 		*/
-		virtual ~StateGame() {};
+		virtual ~StateGame();
 
 		/**
 		* @brief Loads necessary objects.
@@ -46,14 +45,10 @@ class StateGame {
 		*/
 		virtual void Render() = 0;
 
-		/**
-		* @brief Adds a GameObject to the m_game_objects vector.
-		*/
-		// void AddGameObject(GameObject* const game_object);
-
 	protected:
-		// std::vector<GameObject*> m_game_objects; *< List of all the GameObjects in the
-			// state. 
+		StateGame();
+
+		std::vector<Renderer*> m_renderer;
 };
 
 } // namespace ogle

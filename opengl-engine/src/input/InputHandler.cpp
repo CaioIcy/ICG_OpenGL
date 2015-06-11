@@ -11,8 +11,14 @@ std::queue<KeyInputInfo> InputHandler::m_key_input_queue;
 bool InputHandler::m_initialized = false;
 int InputHandler::m_buttons_map[JoystickButtons::JOYSTICK_BUTTON_Count];
 int InputHandler::m_axes_map[JoystickAxes::JOYSTICK_AXIS_Count];
+
+// ?
 int InputHandler::xbox_360_button_map[JoystickButtons::JOYSTICK_BUTTON_Count] = {0, 1, 2, 3, 6, 7, 8, 4, 5, 9, 10};
 int InputHandler::xbox_360_axes_map[JoystickAxes::JOYSTICK_AXIS_Count] = {0, 1, 3, 4, 6, 7, 2, 5};
+
+// Sony Computer Entertainment Wireless Controller
+int InputHandler::ps4_button_map[JoystickButtons::JOYSTICK_BUTTON_Count] = {1, 2, 0, 3, 8, 9, 12, 4, 5, 10, 11};
+int InputHandler::ps4_axes_map[JoystickAxes::JOYSTICK_AXIS_Count] = {0, 1, 2, 5, 6, 7, 3, 4};
 
 void InputHandler::Initialize() {
 	ASSERT(m_initialized == false, "Should not be already initialized.");
@@ -21,15 +27,15 @@ void InputHandler::Initialize() {
 	// array, starting with GLFW_JOYSTICK_1. Once a joystick is detected, it keeps its 
 	// assigned index until it is disconnected, so as joysticks are connected and disconnected,
 	// they will become spread out."
-	for(int i = GLFW_JOYSTICK_1; i < GLFW_JOYSTICK_LAST; i++) {
+	for(int i = GLFW_JOYSTICK_1; i < GLFW_JOYSTICK_LAST; ++i) {
 		if(glfwJoystickPresent(i) == GL_TRUE) {
 			log_warn() << "Joystick [" << i << "] is present. (" << glfwGetJoystickName(i) << ")";
 		}
 	}
 
-	/// @todo Multiple mappings.
-	std::memcpy(&m_buttons_map, &xbox_360_button_map, sizeof m_buttons_map);
-	std::memcpy(&m_axes_map, &xbox_360_axes_map, sizeof m_axes_map);
+	/// @todo Choose mapping according to plugged in controller.
+	std::memcpy(&m_buttons_map, &ps4_button_map, sizeof m_buttons_map);
+	std::memcpy(&m_axes_map, &ps4_axes_map, sizeof m_axes_map);
 
 	m_buttons.fill(false);
 	m_initialized = true;

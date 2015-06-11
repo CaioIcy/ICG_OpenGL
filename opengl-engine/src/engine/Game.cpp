@@ -13,11 +13,10 @@
 namespace {
 using namespace ogle;
 
-void GetGlVersion(int* out_major, int* out_minor, bool* out_over_3_1) {
+void GetGlVersion(int* out_major, int* out_minor) {
 	ASSERT(out_major != nullptr, "Should not be null.");
 	ASSERT(out_minor != nullptr, "Should not be null.");
-	ASSERT(out_over_3_1 != nullptr, "Should not be null.");
-	
+
 	LogBuffer log_version{log_debug()};
 	log_version << "Supported OpenGL versions:\n";
 
@@ -40,10 +39,6 @@ void GetGlVersion(int* out_major, int* out_minor, bool* out_over_3_1) {
 				log_version << ", ";
 			}
 		}
-	}
-
-	if(((*out_major) == 3 && (*out_minor) >= 2) || (*out_major) > 3) {
-		(*out_over_3_1) = true;
 	}
 }
 
@@ -102,7 +97,9 @@ void Game::Load() {
 	InputHandler::Initialize();
 
 	// Creating a valid OpenGL rendering context, so we can initialize GLEW.
-	m_impl->window = glfwCreateWindow(800, 600, "ザ OGLE", nullptr, nullptr);
+	const int screen_width = 960;
+	const int screen_height = 540;
+	m_impl->window = glfwCreateWindow(screen_width, screen_height, "ザ OGLE", nullptr, nullptr);
 	ASSERT(m_impl->window != nullptr, "Could not create GLFW window.");
 	glfwMakeContextCurrent(m_impl->window);
 
@@ -114,29 +111,27 @@ void Game::Load() {
 	const int context_minor = 2;
 	int gl_major = 0;
 	int gl_minor = 0;
-	bool version_over_3_1 = false;
-	GetGlVersion(&gl_major, &gl_minor, &version_over_3_1);
-	ASSERTF(gl_major >= context_major, "Should have OpenGL %d.x or higher.", context_major);
-	// ASSERTF(!(gl_major == context_major && gl_minor < context_minor), "Should have OpenGL %d.%d or higher.", context_major, context_minor);
+	GetGlVersion(&gl_major, &gl_minor);
+	ASSERTF(gl_major >= context_major, "Should have OpenGL %d.%d or higher.", context_major, context_minor);
+	ASSERTF(!(gl_major == context_major && gl_minor < context_minor), "Should have OpenGL %d.%d or higher.", context_major, context_minor);
 
 	glfwDestroyWindow(m_impl->window);
 
 	// Setting window hints.
 	log_debug() << "Setting GLFW context version as: " << context_major << "." << context_minor;
-	if(version_over_3_1) {
-		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-	    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	}
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, context_major);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, context_minor);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);
 
 	// Initialize the window.
-	m_impl->window = glfwCreateWindow(800, 600, "ザ OGLE", nullptr, nullptr);
+	m_impl->window = glfwCreateWindow(screen_width, screen_height, "ザ OGLE", nullptr, nullptr);
 	ASSERT(m_impl->window != nullptr, "Could not create GLFW window.");
 	glfwMakeContextCurrent(m_impl->window);
 	glfwSwapInterval(1);
+	glfwSetWindowUserPointer(m_impl->window, m_impl->window);
 
 	// Set callbacks.
 	glfwSetKeyCallback(m_impl->window, [](GLFWwindow* window, int key, int scancode, int action,
@@ -148,6 +143,8 @@ void Game::Load() {
 		static_cast<void>(window);
 		glViewport(0, 0, width, height);
 	});
+
+	glEnable(GL_DEPTH_TEST);
 
 	// Load the first state of the game.
 	m_impl->state_manager.LoadFirstState();
@@ -171,11 +168,11 @@ void Game::Update(const double dt) {
 
 void Game::Render() {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     m_impl->state_manager.CurrentState()->Render();
 
-	if(!CHECK_GL_ERRORS("Before swapping buffers for rendering.")) {
+	if(!gllog::CheckGlErrors("Before swapping buffers for rendering.")) {
 		glfwSwapBuffers(m_impl->window);
 	}
 }

@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include <GL/glew.h>
+#include "math/Math.h"
 
 namespace ogle {
 
@@ -21,7 +22,9 @@ class ShaderProgram {
 
 		void Enable();
 		void Disable();
-		void SetUniform2f(const std::string& attrib_name, const float x, const float y, const float z);
+		void SetUniform1f(const std::string& attrib_name, const float f);
+		void SetUniform2f(const std::string& attrib_name, const vec2& v);
+		void SetUniformMat4(const std::string& attrib_name, const mat4& matrix);
 
 	private:
 		void Create();

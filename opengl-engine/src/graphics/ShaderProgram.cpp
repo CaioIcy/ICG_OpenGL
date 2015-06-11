@@ -21,7 +21,7 @@ ShaderProgram::ShaderProgram(const std::string& file_name) :
 
 ShaderProgram::~ShaderProgram() {
 	glDeleteProgram(m_object);
-	CHECK_GL_ERRORS("Destroying a program.");
+	gllog::CheckGlErrors("Destroying a program.");
 }
 
 void ShaderProgram::Enable() {
@@ -35,10 +35,27 @@ void ShaderProgram::Disable() {
 	m_enabled = false;
 }
 
-void ShaderProgram::SetUniform2f(const std::string& attrib_name, const float x, const float y, const float z) {
+void ShaderProgram::SetUniform1f(const std::string& attrib_name, const float f) {
 	ASSERT(m_enabled == true, "The program has not been enabled.");
 	const GLint location = m_location_cache->Get(attrib_name);
-	glUniform3f(location, x, y, z);
+	glUniform1f(location, f);
+}
+
+void ShaderProgram::SetUniform2f(const std::string& attrib_name, const vec2& v) {
+	ASSERT(m_enabled == true, "The program has not been enabled.");
+	const GLint location = m_location_cache->Get(attrib_name);
+	glUniform2f(location, v.x, v.y);
+}
+
+void ShaderProgram::SetUniformMat4(const std::string& attrib_name, const mat4& matrix) {
+	ASSERT(m_enabled == true, "The program has not been enabled.");
+	const GLint location = m_location_cache->Get(attrib_name);
+	if(location != -1){
+		glUniformMatrix4fv(location, 1, false, glm::value_ptr(matrix));
+	}
+	else{
+		gllog::CheckGlErrors("Not a legal location.");
+	}
 }
 
 void ShaderProgram::Create() {
@@ -59,14 +76,14 @@ void ShaderProgram::AttachShader(const std::string& file_name) {
 		GL_FRAGMENT_SHADER));
 	glAttachShader(m_object, m_shaders.back()->Object());
 
-	CHECK_GL_ERRORS("Attaching shaders to a program.");
+	gllog::CheckGlErrors("Attaching shaders to a program.");
 }
 
 void ShaderProgram::Link() {
 	ASSERT(m_linked == false, "The program has already been linked.");
 
 	glLinkProgram(m_object);
-	CHECK_GL_ERRORS("Linking a program.");
+	gllog::CheckGlErrors("Linking a program.");
 
 	for(const auto& shader : m_shaders) {
 		glDetachShader(m_object, shader->Object());
@@ -84,7 +101,7 @@ void ShaderProgram::Link() {
 bool ShaderProgram::SuccessfulLinkage() const {
 	GLint link_status = 0;
 	glGetProgramiv(m_object, GL_LINK_STATUS, &link_status);
-	CHECK_GL_ERRORS("Getting program link status.");
+	gllog::CheckGlErrors("Getting program link status.");
 
 	return (link_status == GL_TRUE);
 }
@@ -92,16 +109,15 @@ bool ShaderProgram::SuccessfulLinkage() const {
 void ShaderProgram::LogLinkageError() const {
 	ASSERT(m_linked == false, "The program has not been linked.");
 
-	GLint info_log_length;
+	GLint info_log_length = 0;
 	glGetProgramiv(m_object, GL_INFO_LOG_LENGTH, &info_log_length);
-	CHECK_GL_ERRORS("Getting program compile log length.");
+	gllog::CheckGlErrors("Getting program compile log length.");
 
-	GLchar* str_info_log = new GLchar[info_log_length + 1];
-	glGetProgramInfoLog(m_object, info_log_length, nullptr, str_info_log);
-	CHECK_GL_ERRORS("Getting program compile log.");
+	auto str_info_log = std::make_unique<GLchar[]>(static_cast<size_t>(info_log_length + 1));
+	glGetProgramInfoLog(m_object, info_log_length, nullptr, str_info_log.get());
+	gllog::CheckGlErrors("Getting program compile log.");
 
-	log_error() << "ShaderProgram linker failure: " << str_info_log;
-	delete[] str_info_log;
+	log_error() << "Program linker failure: " << str_info_log.get();
 }
 
 } // namespace ogle

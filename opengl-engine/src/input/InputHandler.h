@@ -49,6 +49,8 @@ class InputHandler {
 		static bool IsButtonDown(const Buttons button);
 
 	private:
+		InputHandler();
+		
 		static void Reset();
 		static void PollKeyInputQueue();
 		static void PollJoystick();
@@ -61,6 +63,9 @@ class InputHandler {
 
 		static int xbox_360_button_map[JoystickButtons::JOYSTICK_BUTTON_Count];
 		static int xbox_360_axes_map[JoystickAxes::JOYSTICK_AXIS_Count];
+
+		static int ps4_button_map[JoystickButtons::JOYSTICK_BUTTON_Count];
+		static int ps4_axes_map[JoystickAxes::JOYSTICK_AXIS_Count];
 };
 
 } // namespace ogle

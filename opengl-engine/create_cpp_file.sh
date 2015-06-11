@@ -14,6 +14,7 @@ ARG_FOLDER_ENGINE="engine"
 ARG_FOLDER_GRAPHICS="graphics"
 ARG_FOLDER_INPUT="input"
 ARG_FOLDER_UTIL="util"
+ARG_FOLDER_MATH="math"
 
 MAIN_PROJECT_NAMESPACE="ogle"
 
@@ -26,8 +27,7 @@ DIR_SRC_ENGINE=${DIR_SRC}/${ARG_FOLDER_ENGINE}
 DIR_SRC_GRAPHICS=${DIR_SRC}/${ARG_FOLDER_GRAPHICS}
 DIR_SRC_INPUT=${DIR_SRC}/${ARG_FOLDER_INPUT}
 DIR_SRC_UTIL=${DIR_SRC}/${ARG_FOLDER_UTIL}
-
-HEADER_FILE_TEXT=
+DIR_SRC_MATH=${DIR_SRC}/${ARG_FOLDER_MATH}
 
 function usage {
 	echo "The correct usage of this script:"
@@ -38,7 +38,7 @@ function usage {
 function check_valid_folder {
 	if [ $1 == "${ARG_FOLDER_AUDIO}" ] || [ $1 == "${ARG_FOLDER_CORE}" ] || \
 		[ $1 == "${ARG_FOLDER_ENGINE}" ] || [ $1 == "${ARG_FOLDER_GRAPHICS}" ] || \
-		[ $1 == "${ARG_FOLDER_INPUT}" ] || [ $1 == "${ARG_FOLDER_UTIL}" ]
+		[ $1 == "${ARG_FOLDER_INPUT}" ] || [ $1 == "${ARG_FOLDER_UTIL}" ] || [ $1 == "${ARG_FOLDER_MATH}" ]
 	then
 		return 0
 	else

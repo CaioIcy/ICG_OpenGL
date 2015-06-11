@@ -1,8 +1,5 @@
 #pragma once
 
-#include <unordered_map>
-#include <string>
-#include <memory>
 #include "util/Logger.h"
 
 namespace ogle {

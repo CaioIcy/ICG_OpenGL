@@ -1,10 +1,17 @@
 #include "engine/StateGame.h"
-// #include "engine/GameObject.h"
+										#include "util/Logger.h"
 
 namespace ogle {
 
-// void StateGame::AddGameObject(GameObject* const game_object) {
-// 	m_game_objects.push_back(game_object);
-// }
+StateGame::StateGame() :
+	m_renderer{nullptr}
+{
+										log_warn() << "StateGame()";
+}
+
+StateGame::~StateGame() {
+										log_warn() << "~StateGame()";
+	m_renderer.clear();
+}
 
 } // namespace ogle
