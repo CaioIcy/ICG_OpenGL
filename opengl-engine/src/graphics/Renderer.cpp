@@ -18,8 +18,8 @@ Renderer::~Renderer() {
 	}
 }
 
-void Renderer::Init(){
-	m_mesh->LoadMesh("assets/models/bike/Bicycle.obj");
+Renderable* Renderer::Init(string path){
+	return m_mesh->LoadMesh(path);
 }
 
 void Renderer::Submit(Renderable* renderable) {
@@ -31,13 +31,13 @@ void Renderer::Render() {
 		
 		renderable->VAO().Bind();
 		
-		glEnableVertexAttribArray(VertexData::LOC_POSITION);
+		/*glEnableVertexAttribArray(VertexData::LOC_POSITION);
 		glVertexAttribPointer(VertexData::LOC_POSITION, VertexData::CMP_POSITION, GL_FLOAT, GL_FALSE,
 		VertexData::TOTAL_COMPONENTS * sizeof(GLfloat), GL_OFFSETOF(VertexData, position));
 
 		glEnableVertexAttribArray(VertexData::LOC_COLOR);
 		glVertexAttribPointer(VertexData::LOC_COLOR, VertexData::CMP_COLOR, GL_FLOAT, GL_FALSE,
-		VertexData::TOTAL_COMPONENTS * sizeof(GLfloat), GL_OFFSETOF(VertexData, color));
+		VertexData::TOTAL_COMPONENTS * sizeof(GLfloat), GL_OFFSETOF(VertexData, color));*/
 		
 		renderable->IBO()->Bind();
 		

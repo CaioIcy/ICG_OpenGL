@@ -50,7 +50,7 @@ Mesh::MeshEntry::~MeshEntry()
     }
 }
 
-void Mesh::MeshEntry::Init(const std::vector<VertexData>& Vertices,
+Renderable* Mesh::MeshEntry::Init(const std::vector<VertexData>& Vertices,
                           const std::vector<unsigned int>& Indices)
 {
     NumIndices = Indices.size();
@@ -62,6 +62,7 @@ void Mesh::MeshEntry::Init(const std::vector<VertexData>& Vertices,
     glGenBuffers(1, &IB);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IB);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * NumIndices, &Indices[0], GL_STATIC_DRAW);
+
 }
 
 Mesh::Mesh()
@@ -82,44 +83,46 @@ void Mesh::Clear()
     }
 }
 
-bool Mesh::LoadMesh(const std::string& Filename)
+Renderable* Mesh::LoadMesh(const std::string& Filename)
 {
     // Release the previously loaded mesh (if it exists)
     Clear();
     
     bool Ret = false;
     Assimp::Importer Importer;
+    Renderable* r;
 
     pScene = Importer.ReadFile(Filename.c_str(), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs);
     
     if (pScene) {
         
-        Ret = InitFromScene(pScene, Filename);
+        r = InitFromScene(pScene, Filename);
     }
     else {
         printf("Error parsing '%s': '%s'\n", Filename.c_str(), Importer.GetErrorString());
     }
 
+    return r;
 
-    return Ret;
 }
 
-bool Mesh::InitFromScene(const aiScene* pScene, const std::string& Filename)
+Renderable* Mesh::InitFromScene(const aiScene* pScene, const std::string& Filename)
 {  
     m_Entries.resize(pScene->mNumMeshes);
     m_Textures.resize(pScene->mNumMaterials);
+    Renderable* r;
 
     // Initialize the meshes in the scene one by one
     for (unsigned int i = 0 ; i < m_Entries.size() ; i++) {
         const aiMesh* paiMesh = pScene->mMeshes[i];
-        InitMesh(i, paiMesh);
+        r = InitMesh(i, paiMesh);
     }
 
-    return true;
+    return r;
 }
 
 
-void Mesh::InitMesh(unsigned int Index, const aiMesh* paiMesh)
+Renderable* Mesh::InitMesh(unsigned int Index, const aiMesh* paiMesh)
 {
     m_Entries[Index].MaterialIndex = paiMesh->mMaterialIndex;
     
@@ -147,6 +150,29 @@ void Mesh::InitMesh(unsigned int Index, const aiMesh* paiMesh)
     }
 
     m_Entries[Index].Init(Vertices, Indices);
+
+    ShapeData* shape_data = new ShapeData();
+
+    // Vertices information
+    shape_data->num_vertices = Vertices.size();
+    shape_data->vertices = new VertexData[shape_data->num_vertices];
+    for (int i = 0; i < shape_data->num_vertices; ++i)
+    {
+        shape_data->vertices[i] = Vertices[i];
+    }
+
+    // Indices information  
+    shape_data->num_indices = Indices.size();
+    shape_data->indices = new GLuint[shape_data->num_indices];
+    for (int i = 0; i < shape_data->num_indices; ++i)
+    {
+        shape_data->indices[i] = Indices[i];
+    }
+    
+    Renderable* r = new Renderable();
+    r->Feed(shape_data);
+
+    return r;
 }
 
 bool Mesh::InitMaterials(const aiScene* pScene, const std::string& Filename)
@@ -215,11 +241,11 @@ void Mesh::Render()
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Entries[i].IB);
 
-        //const unsigned int MaterialIndex = m_Entries[i].MaterialIndex;
+        const unsigned int MaterialIndex = m_Entries[i].MaterialIndex;
 
-        //if (MaterialIndex < m_Textures.size() && m_Textures[MaterialIndex]) {
-            //m_Textures[MaterialIndex]->Bind(GL_TEXTURE0);
-        //}
+        if (MaterialIndex < m_Textures.size() && m_Textures[MaterialIndex]) {
+            m_Textures[MaterialIndex]->Bind(GL_TEXTURE0);
+        }
 
         glDrawElements(GL_TRIANGLES, m_Entries[i].NumIndices, GL_UNSIGNED_INT, 0);
     }

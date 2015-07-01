@@ -18,7 +18,7 @@ class Renderer {
 
 		void Push(const mat4& matrix);
 		void Pop();
-		void Init();
+		Renderable* Init(string path);
 		Mesh* GetMesh();
 		mat4 GetNextTransformation();
 

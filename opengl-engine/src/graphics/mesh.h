@@ -32,6 +32,8 @@
 #include "math/Math.h"
 #include "ogldev_texture.h"
 #include "graphics/VertexData.h"
+#include "ShapeData.h"
+#include "Renderable.h"
 
 struct Vertex
 {
@@ -57,13 +59,13 @@ public:
 
     ~Mesh();
 
-    bool LoadMesh(const std::string& Filename);
+    Renderable* LoadMesh(const std::string& Filename);
 
     void Render();
 
 private:
-    bool InitFromScene(const aiScene* pScene, const std::string& Filename);
-    void InitMesh(unsigned int Index, const aiMesh* paiMesh);
+    Renderable* InitFromScene(const aiScene* pScene, const std::string& Filename);
+    Renderable* InitMesh(unsigned int Index, const aiMesh* paiMesh);
     bool InitMaterials(const aiScene* pScene, const std::string& Filename);
     void Clear();
 
@@ -74,7 +76,7 @@ private:
 
         ~MeshEntry();
 
-        void Init(const std::vector<VertexData>& Vertices,
+        Renderable* Init(const std::vector<VertexData>& Vertices,
                   const std::vector<unsigned int>& Indices);
 
         GLuint VB;
