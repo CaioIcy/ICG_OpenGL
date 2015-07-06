@@ -42,6 +42,8 @@ void Renderer::Render() {
 		renderable->IBO()->Bind();
 		
 		glDrawElements(GL_TRIANGLES, renderable->IBO()->NumIndices(), GL_UNSIGNED_INT, nullptr);
+
+		std::cout << renderable->SD()->vertices[10].position.x << std::endl;
 	}
 }
 

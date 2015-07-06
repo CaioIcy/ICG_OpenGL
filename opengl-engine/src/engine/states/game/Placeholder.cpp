@@ -173,6 +173,8 @@ void Placeholder::Load() {
 	m_renderer.push_back(new Renderer());	
 	m_renderer.back()->Submit(ShapeGenerator::GenerateCube());
 	m_renderer.push_back(new Renderer());	
+	m_renderer.back()->Submit(ShapeGenerator::GenerateCube());
+	m_renderer.push_back(new Renderer());	
 	m_renderer.back()->Submit(m_renderer.back()->Init("assets/models/bike/Bicycle.obj"));
 	m_renderer.push_back(new Renderer());	
 	m_renderer.back()->Submit(m_renderer.back()->Init("assets/models/spiderman/Spider-Man.obj"));
@@ -206,7 +208,8 @@ void Placeholder::Update(const double dt) {
 	x = fmodf(x, 180.0f);
 	y = fmodf(y, 180.0f);
 
-	mat4 translation = glm::translate(mat4(), vec3(0.0f, -1.0f, -1.0f));
+	mat4 translation = glm::translate(mat4(), vec3(0.0f, 1.0f, -1.0f));
+	mat4 translation_ = glm::translate(mat4(), vec3(-4.0f, 0.5f, -6.0f));
 	mat4 translation2 = glm::translate(mat4(), vec3(4.0f, 0.5f, -6.0f));
 	
 	mat4 rotation_x = glm::rotate(mat4(), x, vec3(0.0f, 1.0f, 0.0f));
@@ -220,24 +223,28 @@ void Placeholder::Update(const double dt) {
 	mat4 translation3 = glm::translate(mat4(), vec3(-1.5f, 0.0f, 0.0f));
 	mat4 translation4 = glm::translate(mat4(), vec3(1.5f, 0.0f, 0.0f));
 	
-	m_full_transform = projection * translation * rotation_x;
+	m_full_transform = projection * translation_ * rotation_x;
 	mat4 m_full_transform2 =  projection * translation2 * rotation_x2;
-	m_renderer[3]->Push(m_full_transform2 * translation3);
+
+	m_renderer[4]->Push(projection * translation * glm::scale(mat4(), vec3(0.2, -0.2, 0.2)));
+	m_renderer[3]->Push(projection * translation * glm::scale(mat4(), vec3(0.2, -0.2, 0.2)));
 	m_renderer[2]->Push(m_full_transform2 * translation3);
-	m_renderer[1]->Push(projection * translation * glm::rotate(mat4(), y, vec3(0.0f, fov, 0.0f))
-	* glm::scale(mat4(), vec3(0.2, 0.2, 0.2)));
+	m_renderer[1]->Push(m_full_transform * translation4);
+
 }
 
 void Placeholder::Render() {
-	log_info() << "Rendering Bike...";
+	log_info() << "Rendering Cube...";
 	m_program->SetUniformMat4("full_transform_matrix", m_renderer[1]->GetNextTransformation());
 	m_renderer[1]->Render();
-	log_info() << "Rendering Cube...";
 	m_program->SetUniformMat4("full_transform_matrix", m_renderer[2]->GetNextTransformation());
 	m_renderer[2]->Render();
 	log_info() << "Rendering Spider-Man...";
 	m_program->SetUniformMat4("full_transform_matrix", m_renderer[3]->GetNextTransformation());
-	m_renderer[3]->Render();	
+	m_renderer[3]->Render();
+	log_info() << "Rendering Bike...";
+	m_program->SetUniformMat4("full_transform_matrix", m_renderer[4]->GetNextTransformation());
+	m_renderer[4]->Render();	
 }
 
 } // namespace ogle
