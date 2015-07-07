@@ -167,6 +167,7 @@ bool Mesh::InitMaterials(const aiScene* pScene, const std::string& Filename)
 
 void Mesh::Render()
 {
+
     ogle::gllog::CheckGlErrors("1");
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
@@ -177,7 +178,7 @@ void Mesh::Render()
     for (unsigned int i = 0; i < m_Entries.size(); i++){
         glBindBuffer(GL_ARRAY_BUFFER, m_Entries[i].VB);
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)12);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)12);
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)20);
         ogle::gllog::CheckGlErrors("3");
 
