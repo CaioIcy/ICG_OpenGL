@@ -3,7 +3,7 @@
 #include <GL/glew.h>
 #include <vector>
 #include "math/Math.h"
-#include "mesh.h"
+// #include "before_mesh.h"
 
 class Renderable;
 
@@ -18,13 +18,13 @@ class Renderer {
 
 		void Push(const mat4& matrix);
 		void Pop();
-		Renderable* Init(string path);
-		Mesh* GetMesh();
+		// Renderable* Init(std::string path);
+		// Mesh* GetMesh();
 		mat4 GetNextTransformation();
 
 	private:
 		std::vector<Renderable*> m_renderables;
 		std::vector<mat4> m_transformations;
 		mat4 m_transformation_back;
-		Mesh* m_mesh;
+		// Mesh* m_mesh;
 };

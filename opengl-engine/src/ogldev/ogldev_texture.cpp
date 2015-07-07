@@ -16,8 +16,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <iostream>
 #include "ogldev_texture.h"
+#include <iostream>
+#include <SDL2/SDL_image.h>
 
 Texture::Texture(GLenum TextureTarget, const std::string& FileName)
 {
@@ -25,27 +26,22 @@ Texture::Texture(GLenum TextureTarget, const std::string& FileName)
     m_fileName      = FileName;
 }
 
-
 bool Texture::Load()
 {
-    SDL_Surface * image = SDL_LoadBMP(m_fileName.c_str()); //IMG_Load(m_fileName.c_str());
- 
-    if(image == NULL){
-        printf("\n Erro ao ler a imagem de textura %s\n", SDL_GetError());
+    SDL_Surface* image = IMG_Load(m_fileName.c_str());
+    SDL_Surface* converted = SDL_ConvertSurfaceFormat(image, SDL_PIXELFORMAT_ABGR8888, 0);
+
+    if(image == nullptr) {
+        std::cout << "Error loading texture '" << m_fileName << "': " << IMG_GetError() << std::endl;
         return false;
-    }
-    int Mode = GL_BGR;
-    if(image->format->BytesPerPixel == 4) {
-     Mode = GL_RGBA;
     }
 
     glGenTextures(1, &m_textureObj);
     glBindTexture(m_textureTarget, m_textureObj);
-    glTexImage2D(m_textureTarget, 0, GL_RGBA, image->w, image->h, 0, Mode, GL_UNSIGNED_BYTE, image->pixels);
+    glTexImage2D(m_textureTarget, 0, GL_RGBA, converted->w, converted->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, converted->pixels);
     glTexParameterf(m_textureTarget, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameterf(m_textureTarget, GL_TEXTURE_MAG_FILTER, GL_LINEAR);    
-    glBindTexture(m_textureTarget, 0);
-    
+    glTexParameterf(m_textureTarget, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
     return true;
 }
 

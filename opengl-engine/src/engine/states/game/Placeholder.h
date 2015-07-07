@@ -5,6 +5,9 @@
 #include "graphics/Renderable.h"
 #include "graphics/Renderer.h"
 #include "math/Math.h"
+#include "ogldev/ogldev_basic_lighting.h"
+#include "ogldev/ogldev_camera.h"
+#include "ogldev/ogldev_mesh.h"
 
 namespace ogle {
 
@@ -55,9 +58,14 @@ class Placeholder : public StateGame {
 		virtual void Render() override;
 
 	private:
+		Mesh* m_mesh_pls;
 		Renderable* m_renderable;
 		mat4 m_full_transform;
 		ShaderProgram* m_program;
+	    BasicLightingTechnique* m_pEffect;
+	    DirectionalLight m_directionalLight;
+		Camera* m_pGameCamera;
+
 };
 
 } // namespace ogle

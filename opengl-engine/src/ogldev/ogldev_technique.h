@@ -16,30 +16,41 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef TEXTURE_H
-#define	TEXTURE_H
+#ifndef TECHNIQUE_H
+#define	TECHNIQUE_H
 
-#include <string>
-
+#include <list>
 #include <GL/glew.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 
-class Texture
+class Technique
 {
 public:
-    Texture(GLenum TextureTarget, const std::string& FileName);
 
-    bool Load();
+    Technique();
 
-    void Bind(GLenum TextureUnit);
+    virtual ~Technique();
 
+    virtual bool Init();
+
+    void Enable();
+
+protected:
+
+    bool AddShader(GLenum ShaderType, const char* pFilename);
+
+    bool Finalize();
+
+    GLint GetUniformLocation(const char* pUniformName);
+    
+    GLint GetProgramParam(GLint param);
+    
+    GLuint m_shaderProg;    
+    
 private:
-    std::string m_fileName;
-    GLenum m_textureTarget;
-    GLuint m_textureObj;
+
+    typedef std::list<GLuint> ShaderObjList;
+    ShaderObjList m_shaderObjList;
 };
 
-
-#endif	/* TEXTURE_H */
+#endif	/* TECHNIQUE_H */
 

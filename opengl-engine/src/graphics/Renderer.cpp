@@ -7,8 +7,8 @@
 Renderer::Renderer() :
 	m_renderables{},
 	m_transformations{},
-	m_transformation_back{},
-	m_mesh{new Mesh()}
+	m_transformation_back{}
+	// m_mesh{new Mesh()}
 {
 }
 
@@ -18,9 +18,10 @@ Renderer::~Renderer() {
 	}
 }
 
-Renderable* Renderer::Init(string path){
-	return m_mesh->LoadMesh(path);
-}
+// Renderable* Renderer::Init(string path){
+// 	// return m_mesh->LoadMesh(path);
+// 	return nullptr;
+// }
 
 void Renderer::Submit(Renderable* renderable) {
 	m_renderables.push_back(renderable);
@@ -42,8 +43,6 @@ void Renderer::Render() {
 		renderable->IBO()->Bind();
 		
 		glDrawElements(GL_TRIANGLES, renderable->IBO()->NumIndices(), GL_UNSIGNED_INT, nullptr);
-
-		std::cout << renderable->SD()->vertices[10].position.x << std::endl;
 	}
 }
 
@@ -63,6 +62,6 @@ mat4 Renderer::GetNextTransformation() {
 	return m_transformation_back;
 }
 
-Mesh* Renderer::GetMesh(){
-	return m_mesh;
-}
+// Mesh* Renderer::GetMesh(){
+// 	return m_mesh;
+// }
